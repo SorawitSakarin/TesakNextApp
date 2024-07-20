@@ -1,11 +1,11 @@
-type nutritionalInfo = {
+export type nutritionalInfo = {
   calories: number;
   protein: number;
   fat: number;
   carbohydrates: number;
 };
 
-type farmerInfo = {
+export type farmerInfo = {
   fullName: string;
   lastName: string;
   location: string;
@@ -14,7 +14,7 @@ type farmerInfo = {
   locationMap: string;
 };
 
-type productInfo = {
+export type productInfo = {
   name: string;
   ingredients: string;
   description: string;

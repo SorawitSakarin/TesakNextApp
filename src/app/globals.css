@@ -74,3 +74,74 @@ body {
   top: 0;
   height: 100vh;
 }
+
+.container-wallpaper {
+  width: 100%;
+  height: 100vh;
+  --s: 200px; /* control the size */
+  --c1: #342211;
+  --c2: #a68473;
+  --c3: #d3c1b8;
+  /* --c1: #334a30;
+  --c2: #517c4f;
+  --c3: #b3dfc1; */
+  /* --c1: #880048;
+  --c2: #ec407a;
+  --c3: #f8bbd0; */
+  /* 200: '#f8bbd0',
+  300: '#f48fb1',
+  400: '#f06292',
+  500: '#ec407a',
+  600: '#b0006f',
+  700: '#880048', */
+  /* 200: '#cce9d5',
+  300: '#b3dfc1',
+  400: '#99d4ac',
+  500: '#517c4f',
+  600: '#42633f',
+  700: '#334a30',
+  800: '#253220', */
+  /* 200: '#d3c1b8',
+  300: '#bda396',
+  400: '#a68473',
+  500: '#56351E',
+  600: '#452b18',
+  700: '#342211', */
+  background:
+    repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 180deg)
+      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0 60deg,
+      var(--c2) 0 120deg,
+      var(--c3) 0 180deg
+    );
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+.container-bg {
+  width: 100%;
+  height: 100vh;
+  --s: 125px; /* control the size */
+  --c1: #517c4f;
+  --c2: #56351e;
+
+  --_g: var(--c1) 90deg, var(--c2) 0 135deg, #0000 0;
+  background: conic-gradient(
+      from -45deg at calc(100% / 3) calc(100% / 3),
+      var(--c1) 90deg,
+      #0000 0
+    ),
+    conic-gradient(from -135deg at calc(100% / 3) calc(2 * 100% / 3), var(--_g)),
+    conic-gradient(
+      from 135deg at calc(2 * 100% / 3) calc(2 * 100% / 3),
+      var(--_g)
+    ),
+    conic-gradient(
+      from 45deg at calc(2 * 100% / 3) calc(100% / 3),
+      var(--_g),
+      var(--c1) 0 225deg,
+      var(--c2) 0
+    );
+  background-size: var(--s) var(--s);
+}

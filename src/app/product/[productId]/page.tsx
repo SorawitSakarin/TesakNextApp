@@ -2,6 +2,7 @@
 import ScrollA from '@/app/components/ScrollA';
 import ScrollEffect from '@/app/components/ScrollEffect';
 import CoverCard from '@/app/product/[productId]/components/CoverCard';
+import ProductInformation from '@/app/product/[productId]/components/ProductInformation';
 // import useStickyScroll from "@/app/utils/stickyScroll";
 import Image from 'next/image';
 
@@ -11,11 +12,8 @@ export default function Home() {
   return (
     <div className='flex flex-col w-screen '>
       <CoverCard />
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
+      <ProductInformation />
+      <div className='container-bg'></div>
       {/* <div id='first-card' className='min-h-screen bg-base-300'>
         <div className='h-screen flex items-center justify-center'>
           <p className='hover:bg-secondary-focus text-primary-content'>
