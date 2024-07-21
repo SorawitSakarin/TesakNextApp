@@ -28,13 +28,13 @@ export default function ProductInformation() {
   return (
     <div className='container-wallpaper'>
       <div className='flex flex-col w-full p-4 justify-center items-center h-full gap-4'>
-        <div className='card bg-primary text-primary-content shadow-xl'>
+        <div className='card bg-primary text-primary-content luxury-shadow'>
           <div className='carousel rounded-t-box'>
             {[Product1, Product2, Product3].map((product, index: number) => {
               return <Carousel image={product} key={index} />;
             })}
           </div>
-          <div className='card-body'>
+          <div className='card-body '>
             <h2 className='card-title'>{productName}</h2>
             <p>{productDescription}</p>
             <div className='card-actions justify-end'>

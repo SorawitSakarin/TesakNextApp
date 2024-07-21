@@ -85,16 +85,16 @@ export default function CoverCard() {
       />
 
       <div
-        className={`absolute top-0 left-0 w-[50vw] h-[30vh] bg-secondary-400  ${animate === 'out' ? 'animate-moveInTop' : 'hidden'}`}
+        className={`absolute top-0 left-0 w-[50vw] h-[30vh] bg-primary-200  ${animate === 'out' ? 'animate-moveInTop' : 'hidden'}`}
       ></div>
       <div
-        className={`absolute top-0 right-0 w-[50vw] h-[70vh] bg-secondary-400  ${animate === 'out' ? 'animate-moveInTop' : 'hidden'}`}
+        className={`absolute top-0 right-0 w-[50vw] h-[70vh] bg-primary-200  ${animate === 'out' ? 'animate-moveInTop' : 'hidden'}`}
       ></div>
       <div
-        className={`absolute bottom-0 left-0 w-[50vw] h-[70vh] bg-primary-400  ${animate === 'out' ? 'animate-moveOutTop' : 'hidden'}`}
+        className={`absolute bottom-0 left-0 w-[50vw] h-[70vh] bg-primary  ${animate === 'out' ? 'animate-moveOutTop' : 'hidden'}`}
       ></div>
       <div
-        className={`absolute bottom-0 right-0 w-[50vw] h-[30vh] bg-primary-400  ${animate === 'out' ? 'animate-moveOutTop' : 'hidden'}`}
+        className={`absolute bottom-0 right-0 w-[50vw] h-[30vh] bg-primary  ${animate === 'out' ? 'animate-moveOutTop' : 'hidden'}`}
       ></div>
       <div
         id='appear'
@@ -102,8 +102,8 @@ export default function CoverCard() {
         // className={`flex flex-col w-screen h-full bg-cover bg-center justify-center text-center items-center gap-2  ${animate === 'out' ? 'animate-fadeIn' : 'hidden'}`}
         // style={{ backgroundImage: `url(${RedDip.src})` }}
       >
-        <div className='bg-primary text-primary-content grid place-content-center text-9xl font-black'>
-          TESAK
+        <div className='bg-secondary text-secondary-content grid place-content-center text-5xl font-black p-4 rounded-lg'>
+          <p>TESAK</p>
         </div>
       </div>
     </div>
