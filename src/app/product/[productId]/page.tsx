@@ -1,18 +1,24 @@
 'use client';
-import ScrollA from '@/app/components/ScrollA';
-import ScrollEffect from '@/app/components/ScrollEffect';
+import AirplaneCard from '@/app/product/[productId]/components/AirplaneCard';
 import CoverCard from '@/app/product/[productId]/components/CoverCard';
+import FarmerInformation from '@/app/product/[productId]/components/FarmerInformation';
+import LocationInformation from '@/app/product/[productId]/components/LocationInformation';
 import ProductInformation from '@/app/product/[productId]/components/ProductInformation';
 // import useStickyScroll from "@/app/utils/stickyScroll";
 import Image from 'next/image';
 
-export default function Home() {
-  const duration = 10; // Duration in seconds (200vh)
-  // const activeSection = useStickyScroll(duration);
+export default function Home({ params }: { params: { productId: string } }) {
+  const { productId } = params;
+  console.log(productId);
   return (
     <div className='flex flex-col w-screen '>
       <CoverCard />
-      <ProductInformation />
+      <AirplaneCard />
+      <div className='container-wallpaper py-8'>
+        <LocationInformation />
+        <FarmerInformation />
+        <ProductInformation />
+      </div>
       <div className='container-bg'></div>
       {/* <div id='first-card' className='min-h-screen bg-base-300'>
         <div className='h-screen flex items-center justify-center'>

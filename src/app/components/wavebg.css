@@ -1,0 +1,70 @@
+.wave-bg {
+  background: transparent;
+  box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+  position: relative;
+  width: 480px;
+  height: 660px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 1080px;
+  height: 1400px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -50%;
+  margin-top: -70%;
+  background: linear-gradient(744deg, #00ddeb, #99d4ac 60%, #42633f);
+  /* background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb); */
+}
+/* 100: '#e6f4ea',
+200: '#cce9d5',
+300: '#b3dfc1',
+400: '#99d4ac',
+500: '#517c4f',
+600: '#42633f',
+700: '#334a30', */
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 310px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 6000ms infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 100s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 8000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 100s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 10000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 90s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

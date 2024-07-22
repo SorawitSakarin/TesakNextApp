@@ -1,3 +1,4 @@
+import { transform } from 'next/dist/build/swc';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -8,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        half: '2 / 1',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -56,6 +60,15 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        fadeInCurve: {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut: {
+          '0%': { transform: 'scale(1)', opacity: '1' },
+          '100%': { transform: 'scale(2)', opacity: '0' },
+        },
         moveInTop: {
           '0%': { transform: 'translateY(-100%)', opacity: '1' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
@@ -63,10 +76,6 @@ const config: Config = {
         moveOutTop: {
           '0%': { transform: 'translateY(100%)', opacity: '1' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        fadeOut: {
-          '0%': { opacity: '1' },
-          '100%': { opacity: '0' },
         },
         moveOutRight: {
           '0%': { opacity: '1' },
@@ -79,6 +88,7 @@ const config: Config = {
       },
       animation: {
         fadeIn: 'fadeIn 1s ease-out forwards',
+        fadeInCurve: 'fadeInCurve 1.5s ease-out forwards',
         fadeOut: 'fadeOut 1s ease-out forwards',
         moveOutRight: 'moveOutRight 1s ease-in forwards',
         moveOutLeft: 'moveOutLeft 1s ease-in forwards',
