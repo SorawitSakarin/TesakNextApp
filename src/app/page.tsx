@@ -24,9 +24,15 @@ export default function Home() {
       <p className='text-2xl '>Heading 4</p>
       <p className='text-xl '>Heading 5</p>
       <p className='text-lg '>Heading 6</p>
-      <blockquote className='border-l-4 border-green-600 pl-4 text-red-600'>
-        This is a blockquote.
-      </blockquote>
+      <div className='bg-primary border-1 border-primary flex flex-col gap-4 transform translate-x-10 translate-y-10 translate-z-10'>
+        <p className='text-5xl'>Test</p>
+        <p className='text-3xl'>Sorawit sakarin</p>
+        <p className='text-2xl'>Sorawit sakarin</p>
+        <p className='text-xl'>Sorawit sakarin</p>
+      </div>
+      <div className='w-screen h-screen flex items-center justify-center'>
+        <div className='wave-card'>3D Transformed Box</div>
+      </div>
     </main>
   );
 }

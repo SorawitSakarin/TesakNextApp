@@ -9,7 +9,7 @@ import Logo from '@/app/assets/tesak-logo.png';
 import Pineapple from '@/app/assets/pineapple.png';
 import Carrot from '@/app/assets/carrot.png';
 import Plate from '@/app/assets/plate.png';
-import RedDip from '@/app/assets/red-dip.png';
+import ProductImage from '@/app/assets/bag-of-rice-1.webp';
 import CoverBg from '@/app/assets/cover-bg.png';
 import TesakLogo from '@/app/product/[productId]/components/TesakLogo';
 import WaveBG from '@/app/components/WaveBG';
@@ -55,7 +55,7 @@ export default function CoverCard() {
       <div
         className={`absolute z-10 top-0 left-0 w-[100vw] h-[100vh] bg-primary-200  ${animate === 'out' ? 'animate-moveInTop' : 'hidden'}`}
       ></div>
-      <div
+      {/* <div
         className={`absolute bottom-0 right-0 w-[100vw] translate-x-1/2 aspect-half rounded-tl-full rounded-tr-full bg-primary z-20 ${animate === 'out' ? ' animate-fadeInCurve' : 'hidden'}`}
       ></div>
       <div
@@ -63,7 +63,7 @@ export default function CoverCard() {
       ></div>
       <div
         className={`absolute bottom-0 left-0 w-[38vw] translate-x-[-50%] aspect-half rounded-tl-full rounded-tr-full bg-primary z-20 ${animate === 'out' ? ' animate-fadeInCurve' : 'hidden'}`}
-      ></div>
+      ></div> */}
       <div
         className={`absolute top-0 right-0 w-screen h-screen  bg-primary z-0  ${animate === 'out' ? 'animate-fadeIn' : 'hidden'}`}
       ></div>
@@ -72,8 +72,8 @@ export default function CoverCard() {
         id='appear'
         className={`absolute top-0 z-50 flex flex-col w-screen h-full justify-center text-center items-center gap-2  ${animate === 'out' ? 'animate-fadeIn' : 'hidden'}`}
       >
-        <div className='flex flex-col items-center gap-4 text-base-content  text-xl p-4 rounded-lg'>
-          {/* <TesakLogo width='20%' />
+        {/* <div className='flex flex-col items-center gap-4 text-base-content  text-xl p-4 rounded-lg'> */}
+        {/* <TesakLogo width='20%' />
           <p className='text-5xl font-bold'>TESAK</p>
           <p className='font-bold'>Farmer-led Food Revolution</p>
           <p className='max-w-[400px]'>
@@ -81,8 +81,8 @@ export default function CoverCard() {
             agricultural industry, empowering farmers through data, market
             access, and sustainable practices.
           </p> */}
-          <WaveBG />
-        </div>
+        <WaveBG image={ProductImage} name='Bag of rice' />
+        {/* </div> */}
       </div>
     </div>
   );

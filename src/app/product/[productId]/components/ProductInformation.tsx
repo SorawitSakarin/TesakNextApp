@@ -38,7 +38,7 @@ export default function ProductInformation() {
           })}
         </div>
         <div className='card-body '>
-          <h2 className='card-title'>{productName}</h2>
+          <h2 className='card-title'>- {productName} -</h2>
           <p>{productDescription}</p>
           <div className='card-actions justify-end'>
             <div className='badge'>

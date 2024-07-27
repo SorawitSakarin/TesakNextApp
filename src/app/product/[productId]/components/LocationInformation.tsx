@@ -27,13 +27,18 @@ export default function LocationInformation() {
           See on Map!
         </button>
       </div>
-      <div className='w-1/2'>
+      <div className='w-1/2 text-xs leading-[20px]'>
         <div className='flex gap-2 items-center '>
           <p className='text-lg font-semibold'>Location</p> <FiMapPin />
         </div>
-        <p className='text-xs'>Country: Thailand</p>
-        <p className='text-xs'>Province: Bangkok</p>
-        <p className='text-xs'>District: Jattujak</p>
+        <p>Country: Thailand</p>
+        <p>Province: Bangkok</p>
+        <p>District: Jattujak</p>
+        <p>Farm: Sod Sai Farm</p>
+        <p>Size: 100 square meter</p>
+        <p>Established: 1930</p>
+        <p>Type of Farm: Organic</p>
+        <p>Climate: Tropical</p>
       </div>
     </div>
   );
