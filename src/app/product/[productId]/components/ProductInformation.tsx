@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Product1 from '@/app/assets/bag-of-rice-1.webp';
 import Product2 from '@/app/assets/bag-of-rice-2.webp';
 import Product3 from '@/app/assets/bag-of-rice-3.webp';
+import Product4 from '@/app/assets/bg-farms.webp';
 import { nutritionalInfo } from '@/app/type';
 import { RiFireLine } from 'react-icons/ri';
 import { LuBeef } from 'react-icons/lu';
@@ -13,8 +14,8 @@ interface CarouselProps {
 }
 function Carousel({ image }: CarouselProps) {
   return (
-    <div className='carousel-item'>
-      <Image src={image} alt='Burger' width={300} height={300} />
+    <div className='carousel-item '>
+      <Image src={image} alt='Burger' height={300} />
     </div>
   );
 }
@@ -22,25 +23,45 @@ function Carousel({ image }: CarouselProps) {
 export default function ProductInformation() {
   const productName = 'Bag of rice';
   const productDescription =
-    'Here is the high-quality image of the luxury bag of rice with dark purple packaging. If you need any further adjustments or have other requests, feel free to let me know!';
+    'Experience the authentic taste of Thailand with our Premium Organic Jasmine Rice. Grown in the lush, fertile fields of Chiang Mai, this rice is a testament to the rich agricultural heritage of the region. Our farmers, with decades of experience and a deep commitment to sustainable practices, bring you rice that is not only delicious but also environmentally friendly.';
   const nutritionalInfo: nutritionalInfo = {
     calories: 3423,
     protein: 12,
     fat: 9,
     carbohydrates: 20,
   };
+
+  function RatingStar() {
+    return (
+      <div className='rating rating-sm'>
+        <input name='rating-1' className='mask mask-star bg-orange-400' />
+        <input name='rating-1' className='mask mask-star bg-orange-400' />
+        <input name='rating-1' className='mask mask-star bg-orange-400' />
+        <input name='rating-1' className='mask mask-star bg-orange-400' />
+        <input
+          name='rating-1'
+          className='mask mask-star bg-orange-400'
+          defaultChecked
+        />
+      </div>
+    );
+  }
   return (
-    <div className='flex flex-col w-full p-4 items-center h-full gap-4 '>
-      <div className='card text-primary-content luxury-shadow bg-gradient-to-r from-accent-700 from-20% via-base-content via-80% to-primary'>
-        <div className='carousel rounded-t-box'>
-          {[Product1, Product2, Product3].map((product, index: number) => {
+    <div className='flex flex-col pt-16 pb-8 w-full items-center justify-center min-h-[80vh] gap-4 bg-gradient-to-r from-accent-700 from-30% via-base-content via-70% to-primary-500'>
+      <div className='carousel'>
+        {[Product1, Product2, Product3, Product4].map(
+          (product, index: number) => {
             return <Carousel image={product} key={index} />;
-          })}
-        </div>
+          },
+        )}
+      </div>
+      <div className='card text-primary-content '>
         <div className='card-body '>
-          <h2 className='card-title'>- {productName} -</h2>
-          <p>{productDescription}</p>
-          <div className='card-actions justify-end'>
+          <div className='flex justify-between items-center'>
+            <h2 className='card-title'>- {productName} -</h2> <RatingStar />
+          </div>
+          <p className='text-ms leading-[20px]'>{productDescription}</p>
+          <div className='card-actions justify-end mt-2'>
             <div className='badge'>
               <RiFireLine />
               <p className='pl-1'> {nutritionalInfo.calories}calories </p>
@@ -60,7 +81,6 @@ export default function ProductInformation() {
           </div>
         </div>
       </div>
-      <div className='flex'></div>
     </div>
   );
 }

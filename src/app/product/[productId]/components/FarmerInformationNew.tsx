@@ -1,20 +1,23 @@
 import BGFarmers from '@/app/assets/bg-farmers.webp';
-import Image from 'next/image';
+import Farmer from '@/app/assets/farmer.png';
 import { GoPeople } from 'react-icons/go';
+import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function FarmerInformationNew() {
-  const name = 'Chatatorn Ku';
+  const name = 'Chatatorn Group';
   const experience = 30;
   const products: string[] = ['Rice', 'Pineapple', 'Tomato', 'Potato'];
-  return (
-    <div className='bg-[#000] relative'>
-      <div
-        className='flex justify-between w-full h-[80vh]  p-4  gap-4 text-primary-content bg-cover bg-center'
-        style={{ backgroundImage: `url(${BGFarmers.src})`, opacity: 0.4 }}
-      >
-        {/* <div className='w-1/2 flex-wrap text-xs leading-[20px]'>
+  const farmerMessage =
+    'Every grain of rice, every piece of fruit, and every vegetable we grow is nurtured with care and dedication. We adhere to organic and sustainable farming practices that not only ensure the highest quality produce but also protect our precious environment. Our fields in Chiang Mai have been cultivated by our family for generations, and we take immense pride in continuing this legacy of excellence.';
+
+  const [showLeft, setShowLeft] = useState<boolean>(true);
+  function LeftSide() {
+    return (
+      <div className='w-full flex flex-col items-center justify-center text-md leading-[24px]'>
         <div className='flex gap-2 items-center '>
-          <p className='text-lg font-semibold'>Farmer</p> <GoPeople />
+          <p className='text-xl font-bold'>Farmers</p> <GoPeople />
         </div>
         <p>Name: {name}</p>
         <p>Experience: {experience} years</p>
@@ -27,28 +30,51 @@ export default function FarmerInformationNew() {
             })}
           </span>
         </p>
+        <button
+          onClick={() => setShowLeft(false)}
+          className='btn mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
+        >
+          Lets see who we are <FaArrowCircleRight />
+        </button>
       </div>
-      <div className='basis-1/2 overflow-x-auto luxury-card '>
-        <Image src={Farmer} alt='location-map' className='rounded-xl' />
-      </div> */}
-      </div>
-      <div className='absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-white w-full'>
-        <div className='w-full flex flex-col items-center justify-center text-md leading-[24px]'>
-          <div className='flex gap-2 items-center '>
-            <p className='text-xl font-bold'>Farmers</p> <GoPeople />
-          </div>
-          <p>Country: Thailand</p>
-          <p>Province: Bangkok</p>
-          <p>District: Jattujak</p>
-          <p>Farm: Sod Sai Farm</p>
-          <p>Size: 100 square meter</p>
-          <p>Established: 1930</p>
-          <p>Type of Farm: Organic</p>
-          <p>Climate: Tropical</p>
-          <button className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'>
-            See on Map!
-          </button>
+    );
+  }
+  function RightSide() {
+    return (
+      <div className='w-full flex flex-col items-center justify-center text-md leading-[24px] px-4 text-center gap-4'>
+        <div className='flex gap-2 items-center '>
+          <p className='text-xl font-bold'>Farmers</p> <GoPeople />
         </div>
+        <div
+          className='w-[200px] h-[200px] bg-cover bg-center'
+          style={{ backgroundImage: `url(${Farmer.src})` }}
+        ></div>
+        <p>{farmerMessage}</p>
+        <button
+          onClick={() => setShowLeft(true)}
+          className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
+        >
+          <FaArrowCircleLeft /> Back
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className='bg-[#000] relative   w-screen min-h-[80vh] overflow-hidden text-white'>
+      <div
+        className='flex justify-between w-full min-h-[80vh]  p-4  gap-4 text-primary-content bg-cover bg-center'
+        style={{ backgroundImage: `url(${BGFarmers.src})`, opacity: 0.3 }}
+      ></div>
+
+      <div
+        className={`absolute  top-1/2  translate-y-[-50%] w-full transition-transform duration-1000 ${showLeft ? 'translate-x-0' : '-translate-x-full'}`}
+      >
+        <LeftSide />
+      </div>
+      <div
+        className={`absolute  top-1/2  translate-y-[-50%] w-full transition-transform duration-1000 ${showLeft ? 'translate-x-full' : 'translate-x-0'}`}
+      >
+        <RightSide />
       </div>
     </div>
   );

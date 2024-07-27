@@ -38,8 +38,11 @@ export default function CoverCard() {
         id='cover-start'
         className={`flex flex-col w-screen h-full bg-cover bg-center justify-center text-center items-center gap-2   ${animate === 'in' ? '' : 'animate-fadeOut'}`}
       >
-        <Image src={Logo} className='z-10' alt='tesak-pork' />
-        <p className='text-2xl font-bold z-10'>Tesak Kaset</p>
+        {/* <Image src={Logo} className='z-10' alt='tesak-pork' /> */}
+        <div className='z-10'>
+          <TesakLogo width='80px' />
+        </div>
+        <p className='text-2xl font-bold z-10'>TESAK KASET</p>
         <Image
           alt='Background'
           src={CoverBg}
@@ -72,17 +75,7 @@ export default function CoverCard() {
         id='appear'
         className={`absolute top-0 z-50 flex flex-col w-screen h-full justify-center text-center items-center gap-2  ${animate === 'out' ? 'animate-fadeIn' : 'hidden'}`}
       >
-        {/* <div className='flex flex-col items-center gap-4 text-base-content  text-xl p-4 rounded-lg'> */}
-        {/* <TesakLogo width='20%' />
-          <p className='text-5xl font-bold'>TESAK</p>
-          <p className='font-bold'>Farmer-led Food Revolution</p>
-          <p className='max-w-[400px]'>
-            We build a collaborative digital supply chain platform for the
-            agricultural industry, empowering farmers through data, market
-            access, and sustainable practices.
-          </p> */}
         <WaveBG image={ProductImage} name='Bag of rice' />
-        {/* </div> */}
       </div>
     </div>
   );

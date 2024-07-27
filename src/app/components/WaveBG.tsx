@@ -12,9 +12,15 @@ export default function WaveBG({ image, name }: WaveBGProps) {
       <div className='wave'></div>
       <div className='wave'></div>
       <div className='wave'></div>
-      <div className='absolute w-full top-[15%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-2 items-center text-3xl font-bold'>
-        <TesakLogo width='64px' />
-        <p>TESAK KASET</p>
+      <div className='absolute w-full top-[15%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-2 items-center'>
+        <div className='flex items-center gap-4'>
+          <TesakLogo width='64px' />
+          <div className='flex flex-col gap-8'>
+            <p className=' text-3xl font-bold leading-[0px]'>TESAK</p>
+            <p className=' text-3xl font-bold leading-[0px]'>KASET</p>
+          </div>
+        </div>
+        <p className=' text-sm font-semibold'>Farmer-led Food Revolution.</p>
       </div>
       <div className='absolute top-[30%] left-[50%] wave-card '>
         <div className='flex flex-col text-accent-content rounded-box bg-gradient-to-r from-accent-700 to-base-content'>

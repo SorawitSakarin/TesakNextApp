@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import BGFarm from '@/app/assets/bg-farms.webp';
 import { FiMapPin } from 'react-icons/fi';
+import { LuMap } from 'react-icons/lu';
+import { GrMapLocation } from 'react-icons/gr';
 
 export default function LocationInformationNew() {
   const mapBtnClick = () => {
@@ -10,7 +11,7 @@ export default function LocationInformationNew() {
   return (
     <div className='bg-[#000] relative'>
       <div
-        className='flex justify-between w-full h-[70vh] p-4  gap-4 text-primary-content bg-cover bg-center'
+        className='flex justify-between w-full min-h-[80vh] p-4  gap-4 text-primary-content bg-cover bg-center'
         style={{ backgroundImage: `url(${BGFarm.src})`, opacity: 0.4 }}
       ></div>
       <div className='absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] text-white w-full'>
@@ -28,9 +29,9 @@ export default function LocationInformationNew() {
           <p>Climate: Tropical</p>
           <button
             onClick={mapBtnClick}
-            className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
+            className='btn mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
           >
-            See on Map!
+            <LuMap /> See on Map!
           </button>
         </div>
       </div>
