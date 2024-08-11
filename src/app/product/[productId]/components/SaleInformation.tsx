@@ -1,14 +1,9 @@
-import Image from 'next/image';
 import BGFarm from '@/app/assets/desk.webp';
 import { MdOutlineLocalShipping } from 'react-icons/md';
 import { IoAirplaneOutline } from 'react-icons/io5';
 import { BsShop } from 'react-icons/bs';
 import { RiShoppingBasketLine } from 'react-icons/ri';
 export default function SaleInformation() {
-  // const mapBtnClick = () => {
-  //   window.location.href =
-  //     'https://www.google.co.th/maps/@18.3170581,99.3986862,17z?hl=th&entry=ttu';
-  // };
   return (
     <div className='bg-[#000] relative'>
       <div
@@ -42,13 +37,6 @@ export default function SaleInformation() {
           <p className='mt-2 mb-4'>
             - Available on farm website and major online marketplaces
           </p>
-
-          {/* <button
-            onClick={mapBtnClick}
-            className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
-          >
-            See on Map!
-          </button> */}
         </div>
       </div>
     </div>

@@ -1,9 +1,31 @@
+'use client';
 import BGFarm from '@/app/assets/bg-farms.webp';
 import { FiMapPin } from 'react-icons/fi';
 import { LuMap } from 'react-icons/lu';
-import { GrMapLocation } from 'react-icons/gr';
 
-export default function LocationInformationNew() {
+interface LocationInformationProps {
+  country: string;
+  province: string;
+  district: string;
+  farmName: string;
+  size: string | number;
+  sizeUnit: string;
+  establish: string;
+  type: string;
+  climate: string;
+}
+
+export default function LocationInformationNew({
+  country,
+  province,
+  district,
+  farmName,
+  size,
+  sizeUnit,
+  establish,
+  type,
+  climate,
+}: LocationInformationProps) {
   const mapBtnClick = () => {
     window.location.href =
       'https://www.google.co.th/maps/@18.3170581,99.3986862,17z?hl=th&entry=ttu';
@@ -19,14 +41,16 @@ export default function LocationInformationNew() {
           <div className='flex gap-2 items-center mb-2'>
             <p className='text-xl font-bold'>Location</p> <FiMapPin />
           </div>
-          <p>Country: Thailand</p>
-          <p>Province: Bangkok</p>
-          <p>District: Jattujak</p>
-          <p>Farm: Sod Sai Farm</p>
-          <p>Size: 100 square meter</p>
-          <p>Established: 1930</p>
-          <p>Type of Farm: Organic</p>
-          <p>Climate: Tropical</p>
+          <p>Country: {country}</p>
+          <p>Province: {province}</p>
+          <p>District: {district}</p>
+          <p>Farm: {farmName}</p>
+          <p>
+            Size: {size} {sizeUnit}
+          </p>
+          <p>Established: {establish}</p>
+          <p>Type of Farm: {type}</p>
+          <p>Climate: {climate}</p>
           <button
             onClick={mapBtnClick}
             className='btn mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'

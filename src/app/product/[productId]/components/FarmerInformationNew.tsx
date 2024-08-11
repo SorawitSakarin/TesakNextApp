@@ -1,17 +1,24 @@
-import BGFarmers from '@/app/assets/bg-farmers.webp';
-import Farmer from '@/app/assets/farmer.png';
+'use client';
+import { useState } from 'react';
 import { GoPeople } from 'react-icons/go';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-import { useState } from 'react';
-import Image from 'next/image';
+import BGFarmers from '@/app/assets/bg-farmers.webp';
 
-export default function FarmerInformationNew() {
-  const name = 'Chatatorn Group';
-  const experience = 30;
-  const products: string[] = ['Rice', 'Pineapple', 'Tomato', 'Potato'];
-  const farmerMessage =
-    'Every grain of rice, every piece of fruit, and every vegetable we grow is nurtured with care and dedication. We adhere to organic and sustainable farming practices that not only ensure the highest quality produce but also protect our precious environment. Our fields in Chiang Mai have been cultivated by our family for generations, and we take immense pride in continuing this legacy of excellence.';
+interface FarmerInformationProps {
+  farmerName: string;
+  farmerExperience: number;
+  farmerProducts: string[];
+  farmerMessage: string;
+  farmerImage: any;
+}
 
+export default function FarmerInformationNew({
+  farmerName,
+  farmerExperience,
+  farmerProducts,
+  farmerMessage,
+  farmerImage,
+}: FarmerInformationProps) {
   const [showLeft, setShowLeft] = useState<boolean>(true);
   function LeftSide() {
     return (
@@ -19,12 +26,12 @@ export default function FarmerInformationNew() {
         <div className='flex gap-2 items-center '>
           <p className='text-xl font-bold'>Farmers</p> <GoPeople />
         </div>
-        <p>Name: {name}</p>
-        <p>Experience: {experience} years</p>
+        <p>Name: {farmerName}</p>
+        <p>Experience: {farmerExperience} years</p>
         <p className='flex gap-1 flex-wrap'>
           Products:{' '}
           <span>
-            {products.map((product: string, index: number) => {
+            {farmerProducts.map((product: string, index: number) => {
               if (index < 2) return product + ', ';
               if (index === 2) return product + ', and more';
             })}
@@ -47,9 +54,9 @@ export default function FarmerInformationNew() {
         </div>
         <div
           className='w-[200px] h-[200px] bg-cover bg-center'
-          style={{ backgroundImage: `url(${Farmer.src})` }}
+          style={{ backgroundImage: `url(${farmerImage.src})` }}
         ></div>
-        <p>{farmerMessage}</p>
+        <p className='text-xs'>{farmerMessage}</p>
         <button
           onClick={() => setShowLeft(true)}
           className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'

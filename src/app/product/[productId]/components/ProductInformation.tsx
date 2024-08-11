@@ -20,32 +20,32 @@ function Carousel({ image }: CarouselProps) {
   );
 }
 
-export default function ProductInformation() {
-  const productName = 'Bag of rice';
-  const productDescription =
-    'Experience the authentic taste of Thailand with our Premium Organic Jasmine Rice. Grown in the lush, fertile fields of Chiang Mai, this rice is a testament to the rich agricultural heritage of the region. Our farmers, with decades of experience and a deep commitment to sustainable practices, bring you rice that is not only delicious but also environmentally friendly.';
-  const nutritionalInfo: nutritionalInfo = {
-    calories: 3423,
-    protein: 12,
-    fat: 9,
-    carbohydrates: 20,
-  };
+function RatingStar() {
+  return (
+    <div className='rating rating-sm'>
+      <input name='rating-1' className='mask mask-star bg-orange-400' />
+      <input name='rating-1' className='mask mask-star bg-orange-400' />
+      <input name='rating-1' className='mask mask-star bg-orange-400' />
+      <input name='rating-1' className='mask mask-star bg-orange-400' />
+      <input
+        name='rating-1'
+        className='mask mask-star bg-orange-400'
+        defaultChecked
+      />
+    </div>
+  );
+}
 
-  function RatingStar() {
-    return (
-      <div className='rating rating-sm'>
-        <input name='rating-1' className='mask mask-star bg-orange-400' />
-        <input name='rating-1' className='mask mask-star bg-orange-400' />
-        <input name='rating-1' className='mask mask-star bg-orange-400' />
-        <input name='rating-1' className='mask mask-star bg-orange-400' />
-        <input
-          name='rating-1'
-          className='mask mask-star bg-orange-400'
-          defaultChecked
-        />
-      </div>
-    );
-  }
+interface ProductInformationProps {
+  productName: string;
+  productDescription: string;
+  nutritionalInfo: nutritionalInfo;
+}
+export default function ProductInformation({
+  productName,
+  productDescription,
+  nutritionalInfo,
+}: ProductInformationProps) {
   return (
     <div className='flex flex-col pt-16 pb-8 w-full items-center justify-center min-h-[80vh] gap-4 bg-gradient-to-r from-accent-700 from-30% via-base-content via-70% to-primary-500'>
       <div className='carousel'>

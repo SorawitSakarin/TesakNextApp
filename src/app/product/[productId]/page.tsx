@@ -1,33 +1,88 @@
-'use client';
-import WaveBG from '@/app/components/WaveBG';
+'use server';
 import AirplaneCard from '@/app/product/[productId]/components/AirplaneCard';
 import CoverCard from '@/app/product/[productId]/components/CoverCard';
-import FarmerInformation from '@/app/product/[productId]/components/FarmerInformation';
 import FarmerInformationNew from '@/app/product/[productId]/components/FarmerInformationNew';
 import Footer from '@/app/product/[productId]/components/Footer';
-import LocationInformation from '@/app/product/[productId]/components/LocationInformation';
 import LocationInformationNew from '@/app/product/[productId]/components/LocationInformationNew';
 import ProductInformation from '@/app/product/[productId]/components/ProductInformation';
 import SaleInformation from '@/app/product/[productId]/components/SaleInformation';
-// import useStickyScroll from "@/app/utils/stickyScroll";
-import Image from 'next/image';
+import ProductImage from '@/app/assets/bag-of-rice-1.webp';
+import { nutritionalInfo } from '@/app/type';
+import FarmerImage from '@/app/assets/farmer.png';
 
-export default function Home({ params }: { params: { productId: string } }) {
+async function getData() {
+  const url = '';
+  const res = await fetch(url);
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+export default async function Home({
+  params,
+}: {
+  params: { productId: string };
+}) {
+  // const data = await getData();
   const { productId } = params;
-  console.log(productId);
+  const productName = 'Bag of rice';
+  const productDescription =
+    'Experience the authentic taste of Thailand with our Premium Organic Jasmine Rice. Grown in the lush, fertile fields of Chiang Mai, this rice is a testament to the rich agricultural heritage of the region. Our farmers, with decades of experience and a deep commitment to sustainable practices, bring you rice that is not only delicious but also environmentally friendly.';
+  const nutritionalInfo: nutritionalInfo = {
+    calories: 3423,
+    protein: 12,
+    fat: 9,
+    carbohydrates: 20,
+  };
+  const country = 'Thailand';
+  const province = 'Bangkok';
+  const district = 'Jattujak';
+  const farmName = 'Farm Sod Sai';
+  const size = '2,200';
+  const sizeUnit = 'Square meter';
+  const establish = '1930';
+  const type = 'Organic farm';
+  const climate = 'Tropical';
+  const farmerName = 'Chatatorn Group';
+  const experience = 30;
+  const farmerProducts = ['Rice', 'Pineapple', 'Tomato', 'Potato'];
+  const farmerMessage =
+    'Every grain of rice, every piece of fruit, and every vegetable we grow is nurtured with care and dedication. We adhere to organic and sustainable farming practices that not only ensure the highest quality produce but also protect our precious environment. Our fields in Chiang Mai have been cultivated by our family for generations, and we take immense pride in continuing this legacy of excellence.';
+
   return (
     <div className='flex flex-col w-screen '>
-      <CoverCard />
+      <CoverCard image={ProductImage} productName={productName} />
       <AirplaneCard />
-      <ProductInformation />
-      {/* <div className='container-wallpaper py-8'>
-        <div className='flex flex-col wi-full gap-[48px]'>
-          <LocationInformation />
-          <FarmerInformation />
-        </div>
-      </div> */}
-      <LocationInformationNew />
-      <FarmerInformationNew />
+      <ProductInformation
+        productName={productName}
+        productDescription={productDescription}
+        nutritionalInfo={nutritionalInfo}
+      />
+      <LocationInformationNew
+        country={country}
+        province={province}
+        district={district}
+        farmName={farmName}
+        size={size}
+        sizeUnit={sizeUnit}
+        establish={establish}
+        type={type}
+        climate={climate}
+      />
+      <FarmerInformationNew
+        farmerImage={FarmerImage}
+        farmerName={farmerName}
+        farmerExperience={experience}
+        farmerProducts={farmerProducts}
+        farmerMessage={farmerMessage}
+      />
       <SaleInformation />
       <Footer />
     </div>
