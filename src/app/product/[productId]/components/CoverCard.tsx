@@ -1,9 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import CoverBg from '@/app/assets/cover-bg.png';
-import TesakLogo from '@/app/product/[productId]/components/TesakLogo';
 import WaveBG from '@/app/components/WaveBG';
+import TesakLogo from '@/app/product/[productId]/components/TesakLogo';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface CoverCardProps {
   image: any;
@@ -19,7 +19,7 @@ export default function CoverCard({ image, productName }: CoverCardProps) {
 
     const timer2 = setTimeout(() => {
       setAnimate('out');
-    }, 2000); // Wait for 1s after the initial 1s animation
+    }, 1000); // Wait for 1s after the initial 1s animation
 
     return () => {
       clearTimeout(timer1);
