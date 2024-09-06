@@ -24,31 +24,53 @@ import { nutritionalInfo } from '@/app/type';
 //   }));
 //   return products;
 // }
-async function getData() {
-  const url =
-    'http://127.0.0.1:5001/tesak-kaset/asia-southeast1/api/v1/messages/test';
-  // const res = await fetch(url);
-  // console.log('server print');
-  // await clock();
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
 
-  // if (!res.ok) {
-  //   // This will activate the closest `error.js` Error Boundary
-  //   throw new Error('Failed to fetch data');
-  // }
+// const getData = async (productId: string) => {
+//   const response = await fetch(
+//     `http://127.0.0.1:5001/tesak-kaset/asia-southeast1/api/products/tracking/${productId}`,
+//     {
+//       method: 'GET',
+//     },
+//   );
+//   if (response.ok) {
+//     const fetchData = await response.json();
+//     console.log(fetchData, 'fetchData');
+//     return fetchData.data;
+//   } else {
+//     console.log('error', response.json());
+//   }
+// };
+const getData = async (productId: string) => {
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:5001/tesak-kaset/asia-southeast1/api/v1/products/tracking/${productId}`,
+      {
+        method: 'GET',
+      },
+    );
 
-  // const data = await res.json();
-  // console.log(data);
-  return [];
-}
+    if (response.ok) {
+      const fetchData = await response.json();
+      console.log(fetchData, 'fetchData');
+      return fetchData.data;
+    } else {
+      console.log('error', await response.json());
+      return null; // Return null in case of an error
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null; // Return null in case of an exception
+  }
+};
 export default async function Home({
   params,
 }: {
   params: { productId: string };
 }) {
-  // const data = await getData();
   const { productId } = params;
+  const data = await getData(productId);
+  //TODO parse data into all component
+  console.log(data, 'data');
   const productName = 'Bag of rice';
   const productDescription =
     'Experience the authentic taste of Thailand with our Premium Organic Jasmine Rice. Grown in the lush, fertile fields of Chiang Mai, this rice is a testament to the rich agricultural heritage of the region. Our farmers, with decades of experience and a deep commitment to sustainable practices, bring you rice that is not only delicious but also environmentally friendly.';
