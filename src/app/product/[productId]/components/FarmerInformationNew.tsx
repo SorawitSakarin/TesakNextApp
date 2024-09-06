@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { GoPeople } from 'react-icons/go';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-import BGFarmers from '@/app/assets/bg-farmers.webp';
+import BGFarmers from '@/app/assets/bg-farmers.png';
 
 interface FarmerInformationProps {
   farmerName: string;
@@ -26,23 +26,25 @@ export default function FarmerInformationNew({
         <div className='flex gap-2 items-center '>
           <p className='text-xl font-bold'>Farmers</p> <GoPeople />
         </div>
-        <p>Name: {farmerName}</p>
-        <p>Experience: {farmerExperience} years</p>
-        <p className='flex gap-1 flex-wrap'>
-          Products:{' '}
-          <span>
-            {farmerProducts.map((product: string, index: number) => {
-              if (index < 2) return product + ', ';
-              if (index === 2) return product + ', and more';
-            })}
-          </span>
-        </p>
-        <button
-          onClick={() => setShowLeft(false)}
-          className='btn mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
-        >
-          Lets see who we are <FaArrowCircleRight />
-        </button>
+        <div className='w-[350px] flex flex-col items-center justify-center '>
+          <p>Name: {farmerName}</p>
+          <p>Experience: {farmerExperience} years</p>
+          <p className='flex gap-1 flex-wrap'>
+            Products:{' '}
+            <span>
+              {farmerProducts.map((product: string, index: number) => {
+                if (index < 2) return product + ', ';
+                if (index === 2) return product + ', and more';
+              })}
+            </span>
+          </p>
+          <button
+            onClick={() => setShowLeft(false)}
+            className='btn mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'
+          >
+            Lets see who we are <FaArrowCircleRight />
+          </button>
+        </div>
       </div>
     );
   }
@@ -53,10 +55,13 @@ export default function FarmerInformationNew({
           <p className='text-xl font-bold'>Farmers</p> <GoPeople />
         </div>
         <div
-          className='w-[200px] h-[200px] bg-cover bg-center'
-          style={{ backgroundImage: `url(${farmerImage.src})` }}
+          className='w-[300px] bg-contain bg-no-repeat bg-center'
+          style={{
+            backgroundImage: `url(${farmerImage.src})`,
+            height: `${(300 / farmerImage.width) * farmerImage.height}px`,
+          }}
         ></div>
-        <p className='text-xs'>{farmerMessage}</p>
+        <p className='text-xs w-[350px]'>{farmerMessage}</p>
         <button
           onClick={() => setShowLeft(true)}
           className='btn animate-pulse mt-8 glass text-base-200 hover:text-base-content  whitespace-nowrap'

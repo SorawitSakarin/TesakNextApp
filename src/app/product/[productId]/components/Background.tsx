@@ -1,31 +1,40 @@
-'use client';
-import { Environment, OrbitControls, Sphere } from '@react-three/drei';
+/* eslint-disable react/display-name */
+import { Environment, Sphere } from '@react-three/drei';
 import { Gradient, LayerMaterial } from 'lamina';
-import React from 'react';
+import React, { useMemo } from 'react';
 import * as THREE from 'three';
 
-const Background: React.FC = () => {
+const Background = React.memo(() => {
+  const sphereScale = useMemo(() => 100, []);
+  const sphereRotationY = useMemo(() => Math.PI / 2, []);
+  const gradientProps = useMemo(
+    () => ({
+      colorA: '#357ca1',
+      colorB: '#357ca1',
+      axes: 'y' as const,
+      start: 0,
+      end: -0.5,
+    }),
+    [],
+  );
+
+  const layerMaterialProps = useMemo(
+    () => ({
+      transmission: 1,
+      side: THREE.BackSide,
+    }),
+    [],
+  );
   return (
     <>
-      {/* <OrbitControls enableZoom={false} /> */}
       <Environment preset='sunset' />
-      <Sphere scale={100} rotation-y={Math.PI / 2}>
-        <LayerMaterial
-          lighting='physical'
-          transmission={1}
-          side={THREE.BackSide}
-        >
-          <Gradient
-            colorA={'#357ca1'}
-            colorB={'#357ca1'}
-            axes='y'
-            start={0}
-            end={-0.5}
-          />
+      <Sphere scale={sphereScale} rotation-y={sphereRotationY}>
+        <LayerMaterial lighting='physical' {...layerMaterialProps} >
+          <Gradient {...gradientProps} />
         </LayerMaterial>
       </Sphere>
     </>
   );
-};
+});
 
 export default Background;

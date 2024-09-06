@@ -24,11 +24,13 @@ export default function WaveBG({ image, name }: WaveBGProps) {
       </div>
       <div className='absolute top-[30%] left-[50%] wave-card '>
         <div className='flex flex-col text-accent-content rounded-box bg-gradient-to-r from-accent-700 to-base-content'>
-          <Image
-            src={image}
-            alt='product image'
-            className='rounded-t-box w-full max-w-[300px]'
-          />
+          {typeof image === 'string' && image.startsWith('data:')
+            ? <img src={image} alt='product image' className='rounded-t-box w-full max-w-[300px]' />
+            : <Image
+              src={image}
+              alt='product image'
+              className='rounded-t-box w-full max-w-[300px]'
+            />}
           <div className='flex flex-col items-center gap-2 pt-2 px-8 pb-8 max-w-[300px]'>
             <p className='text-xl font-semibold whitespace-nowrap'>
               - {name} -
