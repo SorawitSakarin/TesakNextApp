@@ -13,6 +13,7 @@ interface LocationInformationProps {
   establish: string;
   type: string;
   climate: string;
+  mapUrl: string;
 }
 
 export default function LocationInformationNew({
@@ -25,9 +26,15 @@ export default function LocationInformationNew({
   establish,
   type,
   climate,
+  mapUrl,
 }: LocationInformationProps) {
+  const isUrl = (str: string) => {
+    const urlRegex =
+      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-.\/]+$/;
+    return urlRegex.test(str);
+  };
   const mapBtnClick = () => {
-    window.location.href =
+    window.location.href = isUrl(mapUrl) ? mapUrl :
       'https://www.google.co.th/maps/@18.3170581,99.3986862,17z?hl=th&entry=ttu';
   };
   return (

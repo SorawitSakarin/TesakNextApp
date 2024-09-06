@@ -14,7 +14,13 @@ interface CarouselProps {
 function Carousel({ image }: CarouselProps) {
   return (
     <div className='carousel-item '>
-      <Image src={image} alt='Burger' height={300} />
+      {typeof image === 'string' && image.startsWith('data:')
+        ? <img src={image} alt='product image' className='rounded-t-box w-full max-w-[300px]' />
+        : <Image
+          src={image}
+          alt='product image'
+          className='rounded-t-box w-full max-w-[300px]'
+        />}
     </div>
   );
 }
@@ -39,16 +45,18 @@ interface ProductInformationProps {
   productName: string;
   productDescription: string;
   nutritionalInfo: nutritionalInfo;
+  productImages: string[];
 }
 export default function ProductInformation({
   productName,
   productDescription,
   nutritionalInfo,
+  productImages,
 }: ProductInformationProps) {
   return (
     <div className='flex flex-col pt-16 pb-8 w-full items-center justify-center min-h-[80vh] gap-4 bg-gradient-to-r from-accent-700 from-30% via-base-content via-70% to-primary-500'>
       <div className='carousel'>
-        {[Product1, Product2, Product3].map((product, index: number) => {
+        {productImages.map((product, index: number) => {
           return <Carousel image={product} key={index} />;
         })}
       </div>
