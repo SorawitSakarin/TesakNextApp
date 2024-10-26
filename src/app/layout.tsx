@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PublicEnvScript } from 'next-runtime-env';
 import { Roboto_Flex } from 'next/font/google';
 import './globals.css';
 
@@ -16,6 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <PublicEnvScript />
+      </head>
       <body className={RobotoFlex.className}>{children}</body>
     </html>
   );

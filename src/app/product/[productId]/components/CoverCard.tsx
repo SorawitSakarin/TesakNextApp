@@ -1,7 +1,7 @@
 'use client';
-import CoverBg from '@/app/assets/cover-bg.png';
-import WaveBG from '@/app/components/WaveBG';
 import TesakLogo from '@/app/product/[productId]/components/TesakLogo';
+import CoverBg from '@/assets/cover-bg.png';
+import WaveBG from '@/components/WaveBG';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

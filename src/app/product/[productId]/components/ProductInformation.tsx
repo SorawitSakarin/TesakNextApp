@@ -1,12 +1,9 @@
-import Image from 'next/image';
-import Product1 from '@/app/assets/bag-of-rice-1.webp';
-import Product2 from '@/app/assets/bag-of-rice-2.webp';
-import Product3 from '@/app/assets/bag-of-rice-3.webp';
 import { nutritionalInfo } from '@/app/type';
-import { RiFireLine } from 'react-icons/ri';
+import Image from 'next/image';
 import { LuBeef } from 'react-icons/lu';
 import { MdOutlineWaterDrop } from 'react-icons/md';
 import { PiBread } from 'react-icons/pi';
+import { RiFireLine } from 'react-icons/ri';
 
 interface CarouselProps {
   image: any;
@@ -14,13 +11,19 @@ interface CarouselProps {
 function Carousel({ image }: CarouselProps) {
   return (
     <div className='carousel-item '>
-      {typeof image === 'string' && image.startsWith('data:')
-        ? <img src={image} alt='product image' className='rounded-t-box w-full max-w-[300px]' />
-        : <Image
+      {typeof image === 'string' && image.startsWith('data:') ? (
+        <img
           src={image}
           alt='product image'
           className='rounded-t-box w-full max-w-[300px]'
-        />}
+        />
+      ) : (
+        <Image
+          src={image}
+          alt='product image'
+          className='rounded-t-box w-full max-w-[300px]'
+        />
+      )}
     </div>
   );
 }

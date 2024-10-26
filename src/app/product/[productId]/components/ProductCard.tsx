@@ -1,44 +1,43 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Container, Image, Root, Text } from '@react-three/uikit'
-import bgFarmers from '@/app/assets/bag-of-rice-1.webp';
-import React, { useState } from 'react'
+import bgFarmers from '@/assets/bag-of-rice-1.webp';
+import { Container, Image, Root, Text } from '@react-three/uikit';
 
 interface productCardProps {
-  province: string
+  province: string;
 }
 const ProductCard = () => {
   return (
-    <Root flexDirection="column" pixelSize={0.01} sizeX={4.4}>
+    <Root flexDirection='column' pixelSize={0.01} sizeX={4.4}>
       <Container
         backgroundColor={0xffffff}
         dark={{ backgroundColor: 0x0 }}
         borderRadius={20}
-        flexDirection="column"
+        flexDirection='column'
         zIndexOffset={10}
         transformTranslateZ={10}
-
       >
         <Container>
           <Image
-            width={440} height={440}
+            width={440}
+            height={440}
             borderRadius={6}
             src={bgFarmers.src}
-            objectFit="fill"
+            objectFit='fill'
           />
         </Container>
         <Container
           backgroundColor={0xffffff}
           dark={{ backgroundColor: 0x0 }}
-          flexDirection="row"
+          flexDirection='row'
           padding={28}
           paddingTop={28 + 4}
-          alignItems="center"
-          justifyContent="space-between"
+          alignItems='center'
+          justifyContent='space-between'
           borderBottomRadius={20}
           castShadow
         >
-          <Container flexDirection="column" gap={8}>
-            <Text fontWeight="normal" fontSize={24} lineHeight="100%">
+          <Container flexDirection='column' gap={8}>
+            <Text fontWeight='normal' fontSize={24} lineHeight='100%'>
               Produce from Thailand
             </Text>
             {/* <Text fontSize={20} fontWeight="medium" letterSpacing={-0.4} color={0x333333}>
@@ -47,8 +46,8 @@ const ProductCard = () => {
           </Container>
         </Container>
       </Container>
-    </Root >
-  )
-}
+    </Root>
+  );
+};
 
-export default ProductCard
+export default ProductCard;

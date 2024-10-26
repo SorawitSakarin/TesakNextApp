@@ -1,8 +1,8 @@
 'use client';
+import BGFarmers from '@/assets/bg-farmers.png';
 import { useState } from 'react';
-import { GoPeople } from 'react-icons/go';
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
-import BGFarmers from '@/app/assets/bg-farmers.png';
+import { GoPeople } from 'react-icons/go';
 
 interface FarmerInformationProps {
   farmerName: string;

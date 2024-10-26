@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-// import Video from '@/app/assets/test-video.mp4';
+// import Video from '@/assets/test-video.mp4';
 const ScrollVideo = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
