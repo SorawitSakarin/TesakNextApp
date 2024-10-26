@@ -104,36 +104,6 @@ export default function LoginComponent() {
           >
             ยินดีต้อนรับ
           </Typography>
-          {collapsed && (
-            <Alert
-              sx={{
-                textAlign: 'left',
-                borderRadius: '0px',
-                border: '0px',
-                borderLeft: '4px solid #C2281D',
-                padding: '8px',
-                margin: '16px 0px',
-                background: '#F8E5E5',
-              }}
-              variant='filled'
-              icon={
-                <CloseIcon
-                  sx={{
-                    borderRadius: '50%',
-                    border: '1px solid #C2281D',
-                    background: '#C2281D',
-                  }}
-                />
-              }
-            >
-              <Box sx={{ color: '#C2281D', fontWeight: 600 }}>
-                ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง
-              </Box>
-              <Box sx={{ color: '#344054' }}>
-                กรุณาตรวจสอบรายละเอียด และระบุอีกครั้ง
-              </Box>
-            </Alert>
-          )}
           <form onSubmit={handleLogin}>
             <Typography sx={{ textAlign: 'left', color: '#344054' }}>
               ชื่อผู้ใช้
@@ -143,6 +113,7 @@ export default function LoginComponent() {
               size='small'
               name='username'
               type='email'
+              onChange={() => setCollapsed(false)}
               slotProps={{
                 input: {
                   startAdornment: (
@@ -163,6 +134,7 @@ export default function LoginComponent() {
               size='small'
               fullWidth
               name='password'
+              onChange={() => setCollapsed(false)}
               placeholder='ระบุรหัสผ่าน'
               id='filled-adornment-password'
               type={showPassword ? 'text' : 'password'}
@@ -213,6 +185,36 @@ export default function LoginComponent() {
               เข้าสู่ระบบ
             </Button>
           </form>
+          {collapsed && (
+            <Alert
+              sx={{
+                textAlign: 'left',
+                borderRadius: '0px',
+                border: '0px',
+                borderLeft: '4px solid #C2281D',
+                padding: '8px',
+                margin: '16px 0px',
+                background: '#F8E5E5',
+              }}
+              variant='filled'
+              icon={
+                <CloseIcon
+                  sx={{
+                    borderRadius: '50%',
+                    border: '1px solid #C2281D',
+                    background: '#C2281D',
+                  }}
+                />
+              }
+            >
+              <Box sx={{ color: '#C2281D', fontWeight: 600 }}>
+                ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง
+              </Box>
+              <Box sx={{ color: '#344054' }}>
+                กรุณาตรวจสอบรายละเอียด และระบุอีกครั้ง
+              </Box>
+            </Alert>
+          )}
         </Box>
       </Box>
       {!matches ? (
