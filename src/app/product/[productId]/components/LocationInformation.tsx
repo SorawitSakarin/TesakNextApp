@@ -1,15 +1,6 @@
+import Field from '@/assets/field.png';
 import Image from 'next/image';
-import Product1 from '@/app/assets/bag-of-rice-1.webp';
-import Product2 from '@/app/assets/bag-of-rice-2.webp';
-import Product3 from '@/app/assets/bag-of-rice-3.webp';
-import { nutritionalInfo } from '@/app/type';
-import { RiFireLine } from 'react-icons/ri';
-import { LuBeef } from 'react-icons/lu';
-import { MdOutlineWaterDrop } from 'react-icons/md';
-import { PiBread } from 'react-icons/pi';
 import { FiMapPin } from 'react-icons/fi';
-import Field from '@/app/assets/field.png';
-import Link from 'next/link';
 
 export default function LocationInformation() {
   const mapBtnClick = () => {

@@ -1,37 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
-/* styles/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -226,4 +192,167 @@ body {
   background: #ec407a;
   background: var(--background);
   transition: opacity 0.5s;
+}
+
+/*/////////////////////////////////////////////////////// Style for NUI ////////////////////////////////////////////////////////////////////*/
+.bg-login-img {
+  background-image: url(/assets/images/bg-farms.png);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-position: center;
+  max-width: 50%;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+@media (min-width: 768px) {
+  .bg-login-img {
+    display: block;
+    max-width: 50%;
+  }
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+  .align-center-position {
+    align-self: unset;
+  }
+}
+
+.main-login {
+  padding-top: 160px;
+  height: 100%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  text-align: -webkit-center;
+}
+
+@media screen and (max-width: 576px) {
+  .main-login {
+    padding: 25px;
+    padding-top: 80px;
+    align-items: flex-start;
+    text-align: -webkit-center;
+  }
+}
+
+.login-box {
+  width: 400px;
+  height: 480px;
+  text-align: -webkit-center;
+}
+
+.style-children {
+  padding: 20px 40px;
+  overflow: auto;
+  height: calc(100vh - 64px);
+}
+
+@media screen and (max-width: 576px) {
+  .login-box {
+    width: auto;
+    height: auto;
+    text-align: -webkit-center;
+  }
+  .style-children {
+    padding: 10px;
+  }
+}
+
+.footer-menu {
+  position: fixed;
+  bottom: 0;
+  width: 320px;
+}
+
+.footer-menu-mb {
+  position: fixed;
+  bottom: 0;
+  width: 270px;
+}
+
+.active-menu {
+  border-left: 4px solid #074e9f;
+  background: #f5fafe;
+}
+
+.active-menu span {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #063e7f !important;
+}
+
+.no-active-menu,
+.no-active-menu span {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #344054 !important;
+}
+
+.active-menu-head,
+.active-menu-head span {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #063e7f !important;
+}
+
+.no-active-menu-head,
+.no-active-menu-head span {
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #344054 !important;
+}
+
+.active-menu-head .MuiSvgIcon-root,
+.active-menu .MuiSvgIcon-root {
+  color: #063e7f !important;
+}
+
+.no-active-menu-head .MuiSvgIcon-root,
+.no-active-menu .MuiSvgIcon-root {
+  color: #344054 !important;
+}
+
+.active-menu-head .MuiListItemIcon-root,
+.active-menu .MuiListItemIcon-root {
+  min-width: 38px !important;
+}
+
+.no-active-menu-head .MuiListItemIcon-root,
+.no-active-menu .MuiListItemIcon-root {
+  min-width: 38px !important;
+}
+
+.online-status {
+  border-radius: 16px;
+  padding: 2px 16px;
+  border-color: #e4f0e5;
+  background-color: #e4f0e5;
+}
+.offline-status {
+  border-radius: 16px;
+  padding: 2px 16px;
+  border-color: #eaeaea;
+  background-color: #eaeaea;
+}
+
+.style-select {
+  width: 100%;
+  height: 44px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.MuiDataGrid-root {
+  border-width: 0px !important;
+}
+
+.footerBTN {
+  display: flex !important;
+  justify-content: space-between !important;
 }

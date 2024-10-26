@@ -1,5 +1,4 @@
 'use server';
-import FarmerImage from '@/app/assets/farmer.png';
 import AirplaneCard from '@/app/product/[productId]/components/AirplaneCard';
 import CoverCard from '@/app/product/[productId]/components/CoverCard';
 import FarmerInformationNew from '@/app/product/[productId]/components/FarmerInformationNew';
@@ -8,7 +7,8 @@ import LocationInformationNew from '@/app/product/[productId]/components/Locatio
 import ProductInformation from '@/app/product/[productId]/components/ProductInformation';
 import SaleInformation from '@/app/product/[productId]/components/SaleInformation';
 import { nutritionalInfo } from '@/app/type';
-import { capitalizeFirstLetter } from '@/app/utils/function';
+import FarmerImage from '@/assets/farmer.png';
+import { capitalizeFirstLetter } from '@/utils/function';
 import dayjs from 'dayjs';
 import { env } from 'next-runtime-env';
 
@@ -45,12 +45,9 @@ import { env } from 'next-runtime-env';
 const getData = async (productId: string) => {
   try {
     const api = env('NEXT_PUBLIC_API_URL');
-    const response = await fetch(
-      `${api}/v1/products/tracking/${productId}`,
-      {
-        method: 'GET',
-      },
-    );
+    const response = await fetch(`${api}/v1/products/tracking/${productId}`, {
+      method: 'GET',
+    });
 
     if (response.ok) {
       const fetchData = await response.json();
@@ -71,13 +68,13 @@ export default async function Home({
   params: { productId: string };
 }) {
   const { productId } = params;
-  console.log("test")
+  console.log('test');
   const data = await getData(productId);
   //TODO parse data into all component
   console.log(data, 'data');
   const productImages = data.images;
   const productName = capitalizeFirstLetter(data.name);
-  const productDescription = capitalizeFirstLetter(data.description)
+  const productDescription = capitalizeFirstLetter(data.description);
   const nutritionalInfo: nutritionalInfo = {
     calories: data.calories,
     protein: data.proteins,
@@ -99,10 +96,8 @@ export default async function Home({
   const farmerMessage = capitalizeFirstLetter(data.farmer.farmerMessage);
   const mapUrl = data.farmer.mapUrl;
 
-
-
   // const productName =  'Bag of rice';
-  // const productDescription = 
+  // const productDescription =
   //   'Experience the authentic taste of Thailand with our Premium Organic Jasmine Rice. Grown in the lush, fertile fields of Chiang Mai, this rice is a testament to the rich agricultural heritage of the region. Our farmers, with decades of experience and a deep commitment to sustainable practices, bring you rice that is not only delicious but also environmentally friendly.';
   // const nutritionalInfo: nutritionalInfo = {
   //   calories:  3423,
@@ -122,7 +117,7 @@ export default async function Home({
   // const farmerName =   'Chatatorn Group';
   // const experience =   30;
   // const farmerProducts = ['Rice', 'Pineapple', 'Tomato', 'Potato'];
-  // const farmerMessage = 
+  // const farmerMessage =
   //   'Every grain of rice, every piece of fruit, and every vegetable we grow is nurtured with care and dedication. We adhere to organic and sustainable farming practices that not only ensure the highest quality produce but also protect our precious environment. Our fields in Chiang Mai have been cultivated by our family for generations, and we take immense pride in continuing this legacy of excellence.';
 
   return (
