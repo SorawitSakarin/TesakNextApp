@@ -1,8 +1,8 @@
 'use client';
 import { logout } from '@/utils/auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
+import { usePathname, useRouter } from 'next/navigation';
 
 const queryClient = new QueryClient();
 
@@ -11,11 +11,18 @@ export default function NavBarAdmin() {
   const accessToken = session?.user?.accessToken;
   localStorage.setItem('accessToken', JSON.stringify(accessToken));
   const pathname = usePathname();
+  const router = useRouter();
 
   if (!accessToken) {
     const urlParam = pathname;
     logout(urlParam);
   }
+  const handleLogout = () => {
+    signOut({ redirect: false });
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('nextauth.message');
+    router.push('/login');
+  };
   return (
     <QueryClientProvider client={queryClient}>
       <div className='navbar bg-primary text-[#e6f4ea] shadow-lg'>
@@ -36,7 +43,7 @@ export default function NavBarAdmin() {
               className='menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow'
             >
               <li>
-                <a onClick={() => logout(pathname)}>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
