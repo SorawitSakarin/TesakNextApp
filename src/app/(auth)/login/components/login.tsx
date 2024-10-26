@@ -71,7 +71,6 @@ export default function LoginComponent() {
           padding: '0px 16px',
           minHeight: '500px',
           overflowY: 'scroll',
-          height: 'calc(100vh - 400px)',
           marginTop: '16px',
         }}
       >
