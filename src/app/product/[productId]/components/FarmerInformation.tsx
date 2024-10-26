@@ -1,5 +1,5 @@
+import Farmer from '@/assets/farmer.png';
 import Image from 'next/image';
-import Farmer from '@/app/assets/farmer.png';
 import { GoPeople } from 'react-icons/go';
 
 export default function FarmerInformation() {

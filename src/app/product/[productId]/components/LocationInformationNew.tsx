@@ -1,5 +1,5 @@
 'use client';
-import BGFarm from '@/app/assets/bg-farms.png';
+import BGFarm from '@/assets/bg-farms.png';
 import { FiMapPin } from 'react-icons/fi';
 import { LuMap } from 'react-icons/lu';
 
@@ -29,13 +29,13 @@ export default function LocationInformationNew({
   mapUrl,
 }: LocationInformationProps) {
   const isUrl = (str: string) => {
-    const urlRegex =
-      /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-.\/]+$/;
+    const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-.\/]+$/;
     return urlRegex.test(str);
   };
   const mapBtnClick = () => {
-    window.location.href = isUrl(mapUrl) ? mapUrl :
-      'https://www.google.co.th/maps/@18.3170581,99.3986862,17z?hl=th&entry=ttu';
+    window.location.href = isUrl(mapUrl)
+      ? mapUrl
+      : 'https://www.google.co.th/maps/@18.3170581,99.3986862,17z?hl=th&entry=ttu';
   };
   return (
     <div className='bg-[#000] relative'>

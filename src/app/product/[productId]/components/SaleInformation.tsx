@@ -1,7 +1,7 @@
-import BGFarm from '@/app/assets/desk.png';
-import { MdOutlineLocalShipping } from 'react-icons/md';
-import { IoAirplaneOutline } from 'react-icons/io5';
+import BGFarm from '@/assets/desk.png';
 import { BsShop } from 'react-icons/bs';
+import { IoAirplaneOutline } from 'react-icons/io5';
+import { MdOutlineLocalShipping } from 'react-icons/md';
 import { RiShoppingBasketLine } from 'react-icons/ri';
 export default function SaleInformation() {
   return (
