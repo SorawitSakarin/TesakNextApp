@@ -76,6 +76,11 @@ export default function LoginComponent() {
         }}
       >
         <Box className='login-box'>
+          {matches ? (
+            <Box className='w-[160px] h-[160px]'></Box>
+          ) : (
+            <Box className='w-[80px] h-[80px]'></Box>
+          )}
           <TesakLogo width='80px' />
           <Typography
             sx={{

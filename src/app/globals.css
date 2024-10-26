@@ -225,7 +225,7 @@
 }
 
 .main-login {
-  padding-top: 160px;
+  padding-top: 0px;
   height: 100%;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -235,7 +235,7 @@
 @media screen and (max-width: 576px) {
   .main-login {
     padding: 25px;
-    padding-top: 80px;
+    padding-top: 0px;
     align-items: flex-start;
     text-align: -webkit-center;
   }
