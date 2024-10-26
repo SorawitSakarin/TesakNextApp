@@ -1,4 +1,3 @@
-import axios from '@/utils/axios';
 import type { NextAuthOptions } from 'next-auth';
 import { DefaultSession, DefaultUser } from 'next-auth';
 import { DefaultJWT } from 'next-auth/jwt';
@@ -40,21 +39,56 @@ export const authOptions = {
       },
 
       async authorize(credentials): Promise<any> {
-        try {
-          const user = await axios.post('api/v1/login', {
-            username: credentials?.username,
-            password: credentials?.password,
-          });
-
-          if (user) {
-            return {
-              id: user.data.userId,
-              accessToken: user.data.accessToken,
-            };
-          }
-        } catch (e: any) {
-          throw new Error(e?.message);
+        const user = {
+          id: '12345',
+          accessToken: 'mock-access-token',
+        };
+        const allowedUsernames = [
+          {
+            username: 'sorawit.saka@gmail.com',
+            password: '123',
+            name: 'Sorawit Sakarin',
+          },
+          {
+            username: 'ku.chayatorn@gmail.com',
+            password: 'AdminP@ssw0rd',
+            name: 'Chayatorn Ku',
+          },
+          {
+            username: 'dev@tesakkaset.com',
+            password: 'AdminP@ssw0rd',
+            name: 'Dev TesaK',
+          },
+        ];
+        if (
+          credentials?.username &&
+          allowedUsernames.find(
+            (u) =>
+              u.username.toLowerCase() ===
+                credentials?.username.toLowerCase() &&
+              u.password === credentials?.password,
+          )
+        ) {
+          return user;
+        } else {
+          throw new Error('Invalid credentials');
         }
+        // TODO Connect to API
+        // try {
+        //   const user = await axios.post('api/v1/login', {
+        //     username: credentials?.username,
+        //     password: credentials?.password,
+        //   });
+
+        //   if (user) {
+        //     return {
+        //       id: user.data.userId,
+        //       accessToken: user.data.accessToken,
+        //     };
+        //   }
+        // } catch (e: any) {
+        //   throw new Error(e?.message);
+        // }
       },
     }),
   ],

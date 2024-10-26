@@ -6,48 +6,22 @@ import Footer from '@/app/product/[productId]/components/Footer';
 import LocationInformationNew from '@/app/product/[productId]/components/LocationInformationNew';
 import ProductInformation from '@/app/product/[productId]/components/ProductInformation';
 import SaleInformation from '@/app/product/[productId]/components/SaleInformation';
+import TesakLogo from '@/app/product/[productId]/components/TesakLogo';
 import { nutritionalInfo } from '@/app/type';
 import FarmerImage from '@/assets/farmer.png';
 import { capitalizeFirstLetter } from '@/utils/function';
 import dayjs from 'dayjs';
 import { env } from 'next-runtime-env';
 
-// const clock = async () => {
-//   const timer = setTimeout(() => {}, 2000);
-//   return () => {
-//     console.log('before');
-//     clearTimeout(timer);
-//     console.log('after');
-//   };
-// };
-// export async function generateStaticParams() {
-//   const products = Array.from({ length: 100 }, (_, i) => ({
-//     productId: (i + 1).toString(),
-//   }));
-//   return products;
-// }
-
-// const getData = async (productId: string) => {
-//   const response = await fetch(
-//     `http://127.0.0.1:5001/tesak-kaset/asia-southeast1/api/products/tracking/${productId}`,
-//     {
-//       method: 'GET',
-//     },
-//   );
-//   if (response.ok) {
-//     const fetchData = await response.json();
-//     console.log(fetchData, 'fetchData');
-//     return fetchData.data;
-//   } else {
-//     console.log('error', response.json());
-//   }
-// };
 const getData = async (productId: string) => {
   try {
     const api = env('NEXT_PUBLIC_API_URL');
-    const response = await fetch(`${api}/v1/products/tracking/${productId}`, {
-      method: 'GET',
-    });
+    const response = await fetch(
+      `${api}/api/v1/products/tracking/${productId}`,
+      {
+        method: 'GET',
+      },
+    );
 
     if (response.ok) {
       const fetchData = await response.json();
@@ -68,10 +42,20 @@ export default async function Home({
   params: { productId: string };
 }) {
   const { productId } = params;
-  console.log('test');
   const data = await getData(productId);
-  //TODO parse data into all component
-  console.log(data, 'data');
+  if (data === null) {
+    return (
+      <div className='flex flex-col items-center justify-center h-screen'>
+        <div className='flex flex-col items-center justify-center bg-primary-content p-[32px] rounded-box gap-4'>
+          <TesakLogo width='80px' />
+          <h2>- Product Not Found -</h2>
+          <a href='https://tesakkaset.com/' className='link link-underline'>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    );
+  }
   const productImages = data.images;
   const productName = capitalizeFirstLetter(data.name);
   const productDescription = capitalizeFirstLetter(data.description);

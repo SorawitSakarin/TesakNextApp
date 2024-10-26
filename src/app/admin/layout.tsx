@@ -1,3 +1,4 @@
+import NavBarAdmin from '@/app/admin/navbar';
 import { authOptions } from '@/utils/auth';
 import AuthProvider from '@/utils/providers/auth.provider';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
@@ -11,7 +12,10 @@ export default async function AdminLayout({
   const session = await getServerSession(authOptions);
   return (
     <AppRouterCacheProvider>
-      <AuthProvider session={session}>{children}</AuthProvider>
+      <AuthProvider session={session}>
+        <NavBarAdmin />
+        {children}
+      </AuthProvider>
     </AppRouterCacheProvider>
   );
 }
