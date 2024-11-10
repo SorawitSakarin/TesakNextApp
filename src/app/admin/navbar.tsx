@@ -106,10 +106,8 @@ export default function NavBarAdmin({
 
   const shortName = (name: string | null): string => {
     if (name) {
-      const nameSplit = name.split(" ");
-      const firstName = nameSplit[0];
-      const lastName = nameSplit[1] || "";
-      const shortName = `${firstName[0]}${lastName[0] || ""}`;
+      const firstLetter = name.trim().match(/[a-zA-Z]/)?.[0] || '';
+      const shortName = firstLetter.toUpperCase();
       return shortName;
     } else {
       return "";

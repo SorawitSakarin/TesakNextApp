@@ -34,7 +34,7 @@ export default function AllProductItem({
       // Trigger download of the image
       const link = document.createElement("a");
       link.href = image;
-      link.download = `${product.name}.png`;
+      link.download = `${product.name}_QRCode.png`;
       link.click();
     }
 
