@@ -1,4 +1,5 @@
-import LineManager from '@/app/admin/components/adminManager/LineManager'
+'use client';
+import LineManager from '@/app/admin/line-message/components/LineManager'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import { useHttpClient } from '@/utils/hooks/http-hook';
 import liff from '@line/liff';
@@ -14,7 +15,7 @@ const Page = () => {
     const fetchLineMessagesData = async () => {
       try {
         const responseData = await sendRequest(
-          process.env.NEXT_PUBLIC_API_URL + "/messages",
+          process.env.NEXT_PUBLIC_API_URL + "/v1/messages",
           "GET",
           null,
           {
@@ -37,9 +38,7 @@ const Page = () => {
         if (process.env.NODE_ENV === "development") {
           const api = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
           if (api) {
-            console.log("token", api);
             setLineAccessToken(api);
-            console.log(lineAccessToken)
           }
         } else {
           const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
@@ -70,10 +69,9 @@ const Page = () => {
 
   return (
     <div className="container flex flex-col justify-center py-8 gap-16">
-    {isLoading && <LoadingSpinner />}
-    <div className="divider divider-neutral"></div>
-    <LineManager lines={lines} />
-  </div>
+      {isLoading && <LoadingSpinner />}
+      <LineManager lines={lines} />
+    </div>
   )
 }
 

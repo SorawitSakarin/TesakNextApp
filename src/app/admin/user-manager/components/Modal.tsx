@@ -3,9 +3,9 @@ import bookBankDataJson from "@/app/admin/data/bookbank.json";
 import userTypeDataJson from "@/app/admin/data/userType.json";
 import userTierDataJson from "@/app/admin/data/userTier.json";
 import { UserDataType } from "@/app/admin/type";
-import ModalTableEditText from "@/app/admin/components/ModalTableEditText";
-import ModalTableEditSelect from "@/app/admin/components/ModalTableEditSelect";
-import ModalTableDatePicker from "@/app/admin/components/ModalTableDatePicker";
+import ModalTableEditText from "@/app/admin/user-manager/components/ModalTableEditText";
+import ModalTableEditSelect from "@/app/admin/user-manager/components/ModalTableEditSelect";
+import ModalTableDatePicker from "@/app/admin/user-manager/components/ModalTableDatePicker";
 interface ModalProps {
   id: string;
   curUser: UserDataType | null;

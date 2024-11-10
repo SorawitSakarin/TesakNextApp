@@ -1,5 +1,6 @@
-import AddProduct from '@/app/admin/components/productsManager/AddProduct'
-import AllProduct from '@/app/admin/components/productsManager/AllProduct'
+'use client';
+import AddProduct from '@/app/admin/products-manager/components/AddProduct'
+import AllProduct from '@/app/admin/products-manager/components/AllProduct'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import { useHttpClient } from '@/utils/hooks/http-hook'
 import liff from '@line/liff'
@@ -15,7 +16,6 @@ const Page = () => {
         if (process.env.NODE_ENV === "development") {
           const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
           if (token) {
-            console.log(token)
             setLineAccessToken(token);
           }
         } else {
@@ -35,12 +35,8 @@ const Page = () => {
       }
     };
     initializeLiff();
-    console.log(lineAccessToken)
   }, []);
 
-  useEffect(() => {
-    console.log(lineAccessToken)
-  }, [lineAccessToken]);
 
   return (
     <div className="container flex flex-col justify-center pt-8 pb-32 gap-16">

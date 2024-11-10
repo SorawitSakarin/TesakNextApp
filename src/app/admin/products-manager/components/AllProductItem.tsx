@@ -1,5 +1,9 @@
 import Image from "@/app/admin/components/Image";
 import { useState } from "react";
+import Link from "next/link";
+import QRCode from "react-qr-code";
+import { useRef } from "react";
+import html2canvas from 'html2canvas-pro';
 
 interface AllProductItemProps {
   product: any;
@@ -12,6 +16,8 @@ export default function AllProductItem({
   date,
 }: AllProductItemProps) {
   const [productInfo, setProductInfo] = useState<any>({});
+  const qrCodeRef = useRef<any>()
+
   const viewClickHandler = async () => {
     const track = await fetchTrackingProduct(product.id);
     setProductInfo(track);
@@ -20,28 +26,60 @@ export default function AllProductItem({
     ) as HTMLDialogElement;
     modal?.showModal();
   };
+  const downloadQRCodeClickHandler = async () => {
+    if (qrCodeRef.current) {
+      const canvas = await html2canvas(qrCodeRef.current);
+      const image = canvas.toDataURL("image/png");
+
+      // Trigger download of the image
+      const link = document.createElement("a");
+      link.href = image;
+      link.download = `${product.name}.png`;
+      link.click();
+    }
+
+  }
 
   return (
     <tr key={product.id}>
       <td className="w-[15%] text-center">{date}</td>
       <td className="w-[15%] text-center">{product.name}</td>
-      <td className="w-[60%] text-center">{product.description}</td>
+      <td className="w-[50%] text-center">{product.description}</td>
+      <td className="w-[10%] max-w-[120px] max-h-[120px] aspect-square text-center overflow-hidden">
+        <div id="qrcode" className="w-[px] h-[100px] " style={{ color: "rgb(52, 152, 219)" }}>
+          <QRCode
+            size={256}
+            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+            value={`${window.location.origin}/product/${product.id}`}
+            viewBox={`0 0 256 256`}
+          />
+        </div>
+        {/* this was to create the hidden qr code for download with high resolution */}
+        <div className="w-0 h-0 overflow-hidden">
+          <div ref={qrCodeRef} id="qrcode" className="w-[1000px] h-[1000px]" style={{ color: "rgb(52, 152, 219)" }}>
+            <QRCode
+              size={256}
+              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+              value={`${window.location.origin}/product/${product.id}`}
+              viewBox={`0 0 256 256`}
+            />
+          </div>
+        </div>
+      </td>
       <td className="w-[10%]">
         <div className="flex flex-col justify-between">
-          <button onClick={viewClickHandler} className="btn btn-secondary m-2">
+          <button onClick={viewClickHandler} className="btn btn-secondary m-2 w-[120px]">
             View
           </button>
-          <button
-            onClick={() => {
-              const api = process.env.NEXT_PUBLIC_APP_TRACKING_PRODUCT_URL;
-              window.open(
-                api +
-                `/product/${product.id}`
-              );
-            }}
-            className="btn btn-secondary btn-outline  m-2"
-          >
-            Link
+          <Link href={`/product/${product.id}`} target="_blank">
+            <button
+              className="btn btn-secondary btn-outline m-2 w-[120px]"
+            >
+              Link
+            </button>
+          </Link>
+          <button onClick={downloadQRCodeClickHandler} className="btn btn-secondary m-2 w-[120px]">
+            Download QR Code
           </button>
         </div>
         {productInfo && (
@@ -84,6 +122,8 @@ export default function AllProductItem({
           </dialog>
         )}
       </td>
+
+
     </tr>
   );
 }

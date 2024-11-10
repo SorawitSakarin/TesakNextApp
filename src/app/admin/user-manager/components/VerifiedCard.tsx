@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../index.css";
 import { UserDataType } from "@/app/admin/type";
-import Modal from "@/app/admin/components/Modal";
+import Modal from "@/app/admin/user-manager/components/Modal";
 
 
 interface VerifiedCardProps {
@@ -27,7 +27,7 @@ const VerifiedCard: React.FC<VerifiedCardProps> = ({
     try {
       const api = process.env.NEXT_PUBLIC_API_URL
       const response = await fetch(
-        `${api}/lines/${userData.id}`,
+        `${api}/v1/lines/${userData.id}`,
         {
           method: "POST",
           headers: {
@@ -41,7 +41,6 @@ const VerifiedCard: React.FC<VerifiedCardProps> = ({
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const result = await response.json();
-      console.log("Response:", result);
       refreshData();
       //TODO: logic update expired time
     } catch (error) {
@@ -56,7 +55,7 @@ const VerifiedCard: React.FC<VerifiedCardProps> = ({
         //fetchUserbyLineID
         const api = process.env.NEXT_PUBLIC_API_URL
         const response = await fetch(
-          `${api}/lines/getline/${user.lineId
+          `${api}/v1/lines/getline/${user.lineId
           }`,
           {
             method: "GET",

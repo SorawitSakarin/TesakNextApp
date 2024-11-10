@@ -1,7 +1,7 @@
 import React from "react";
 import { UserDataType } from "@/app/admin/type";
-import VerifiedCard from "@/app/admin/components/adminManager/VerifiedCard";
-import PreverifiedCard from "@/app/admin/components/adminManager/PreverifiedCard";
+import VerifiedCard from "@/app/admin/user-manager/components/VerifiedCard";
+import PreverifiedCard from "@/app/admin/user-manager/components/PreverifiedCard";
 
 interface UserManagerProps {
   users: UserDataType[] | null;

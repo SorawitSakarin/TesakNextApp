@@ -44,7 +44,7 @@
 //     try {
 //       const api = env('NEXT_PUBLIC_API_URL')
 //       const response = await fetch(
-//         api + "/files/file",
+//         api + "/v1/files/file",
 //         {
 //           method: "POST",
 //           body: formData,

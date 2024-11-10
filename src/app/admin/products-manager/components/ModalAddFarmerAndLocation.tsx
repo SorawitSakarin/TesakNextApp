@@ -1,5 +1,5 @@
-import ModalTableEditSelect from "@/app/admin/components/ModalTableEditSelect";
-import ModalTableEditText from "@/app/admin/components/ModalTableEditText";
+import ModalTableEditSelect from "@/app/admin/user-manager/components/ModalTableEditSelect";
+import ModalTableEditText from "@/app/admin/user-manager/components/ModalTableEditText";
 import { useHttpClient } from "@/utils/hooks/http-hook";
 import { useState } from "react";
 
@@ -36,7 +36,7 @@ const ModalAddFarmerAndLocation = ({
       const api = process.env.NEXT_PUBLIC_API_URL
       const responseData = await sendRequest(
         api +
-        "/products/tracking-farmer/create",
+        "/v1/products/tracking-farmer/create",
         "POST",
         JSON.stringify(info),
         {
@@ -49,7 +49,6 @@ const ModalAddFarmerAndLocation = ({
           handleClose();
         })
         ;
-      console.log(responseData);
     } catch (err) {
       console.log(err);
       alert(err);

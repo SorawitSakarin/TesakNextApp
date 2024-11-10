@@ -1,7 +1,7 @@
 'use client';
 import dayjs from "dayjs";
 import { useState } from "react";
-import AllProductItem from "@/app/admin/components/productsManager/AllProductItem";
+import AllProductItem from "@/app/admin/products-manager/components/AllProductItem";
 interface AllProductProps {
   lineAccessToken: any;
 }
@@ -15,7 +15,7 @@ const AllProduct = ({ lineAccessToken }: AllProductProps) => {
   const fetchTrackingProduct = async (productId: string) => {
     const api = process.env.NEXT_PUBLIC_API_URL
     const response = await fetch(
-      api + `/products/tracking/${productId}`,
+      api + `/v1/products/tracking/${productId}`,
       {
         method: "GET",
         headers: {
@@ -31,9 +31,8 @@ const AllProduct = ({ lineAccessToken }: AllProductProps) => {
   };
   const fetchTrackingProducts = async () => {
     const api = process.env.NEXT_PUBLIC_API_URL
-    console.log(api);
     const response = await fetch(
-      api + "/products/tracking-products",
+      api + "/v1/products/tracking-products",
       {
         method: "GET",
         headers: {
@@ -46,7 +45,6 @@ const AllProduct = ({ lineAccessToken }: AllProductProps) => {
       setTrackingProducts(fetchData.data);
     } else {
     }
-    console.log(response)
   };
   return (
     <div id="calculate" className="flex flex-col gap-4 w-full">
@@ -58,7 +56,10 @@ const AllProduct = ({ lineAccessToken }: AllProductProps) => {
               <tr>
                 <th className="w-[15%] text-center">Created at</th>
                 <th className="w-[15%] text-center">Name</th>
-                <th className="w-[60%] text-center">Description</th>
+                <th className="w-[50%] text-center">Description</th>
+                <th className="w-[10%] text-center">
+                  QR Code
+                </th>
                 <th className="w-[10%] text-center">
                   <div className="flex justify-end">
                     <a className="btn text-l" href="#addProduct">

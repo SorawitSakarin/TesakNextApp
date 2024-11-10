@@ -19,7 +19,7 @@ const LineManagerMessage: React.FC<LineManagerMessageProps> = ({ line, index }) 
         setIsLoading(true);
         const body = { ...line, message: lineMessage };
         try {
-            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/messages/create', {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/v1/messages/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

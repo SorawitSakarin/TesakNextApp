@@ -33,7 +33,7 @@ const AddFarmerAndLocation = ({
       const api = process.env.NEXT_PUBLIC_API_URL
       const responseData = await sendRequest(
         api +
-        "/products/tracking-farmer/create",
+        "/v1/products/tracking-farmer/create",
         "POST",
         JSON.stringify(info),
         {

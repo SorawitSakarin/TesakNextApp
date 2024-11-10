@@ -17,7 +17,7 @@ const AddProduct = ({ lineAccessToken }: AddProductProps) => {
     const fetchFarmers = async () => {
       const api = process.env.NEXT_PUBLIC_API_URL
       const response = await fetch(
-        api + "/products/tracking-farmers",
+        api + "/v1/products/tracking-farmers",
         {
           method: "GET",
           headers: {
@@ -38,7 +38,7 @@ const AddProduct = ({ lineAccessToken }: AddProductProps) => {
     const fetchFarmers = async () => {
       const api = process.env.NEXT_PUBLIC_API_URL
       const response = await fetch(
-        api + "/products/tracking-farmers",
+        api + "/v1/products/tracking-farmers",
         {
           method: "GET",
           headers: {
@@ -62,7 +62,7 @@ const AddProduct = ({ lineAccessToken }: AddProductProps) => {
       const api = process.env.NEXT_PUBLIC_API_URL
       const responseData = await sendRequest(
         api +
-        "/products/tracking-product/create",
+        "/v1/products/tracking-product/create",
         "POST",
         JSON.stringify(productInfo),
         {
@@ -81,7 +81,6 @@ const AddProduct = ({ lineAccessToken }: AddProductProps) => {
 
   const editHandler = async (id: string) => {
     const modal = document.getElementById(id) as HTMLDialogElement;
-    console.log(modal)
     if (modal) {
       modal.showModal();
     };

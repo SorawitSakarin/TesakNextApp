@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import bookBankDataJson from "@/app/admin/data/bookbank.json"
 import { UserDataType } from "@/app/admin/type";
 import { useHttpClient } from "@/utils/hooks/http-hook";
-import ImageRotate from "@/app/admin/components/ImageRotate";
+import ImageRotate from "@/app/admin/user-manager/components/ImageRotate";
 interface PreverifiedCardProps {
   user: UserDataType;
   index: number;
@@ -28,7 +28,7 @@ const PreverifiedCard: React.FC<PreverifiedCardProps> = ({
       try {
         const api = process.env.NEXT_PUBLIC_API_URL
         const responseData = await sendRequest(
-          api + "/lines/userimages",
+          api + "/v1/lines/userimages",
           "POST",
           JSON.stringify(formData),
           {
@@ -48,7 +48,7 @@ const PreverifiedCard: React.FC<PreverifiedCardProps> = ({
     try {
       const api = process.env.NEXT_PUBLIC_API_URL
       const responseData = await sendRequest(
-        api + "/lines/updatefarmerinformation",
+        api + "v1/lines/updatefarmerinformation",
         "POST",
         JSON.stringify(sendUser),
         {
@@ -69,7 +69,7 @@ const PreverifiedCard: React.FC<PreverifiedCardProps> = ({
       console.log(messageText);
       const api = process.env.NEXT_PUBLIC_API_URL
       const responseData = await sendRequest(
-        api + "/messages/send",
+        api + "v1/messages/send",
         "POST",
         JSON.stringify({ userId: user.lineId, messageText }),
         {

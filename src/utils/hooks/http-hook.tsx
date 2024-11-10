@@ -1,4 +1,4 @@
-
+'use client';
 import { useState, useCallback, useRef, useEffect } from "react";
 
 interface UseHttpClientProps {
@@ -44,7 +44,7 @@ export const useHttpClient = (): UseHttpClientProps => {
 
       setIsLoading(false);
       return responseData;
-    } catch (err:any) {
+    } catch (err: any) {
       if (err.message !== "The user aborted a request.") {
         setError(err.message);
         setIsLoading(false);
