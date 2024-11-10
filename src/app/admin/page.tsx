@@ -1,3 +1,10 @@
+'use client';
+
+import { useEffect, useState } from "react";
 export default function AdminPage() {
-  return <div>Admins is hereee</div>;
+  useEffect(() => {
+    location.href = "/admin/user-manager";
+  }, []);
+  return <>
+  </>;
 }

@@ -17,7 +17,7 @@ const getData = async (productId: string) => {
   try {
     const api = env('NEXT_PUBLIC_API_URL');
     const response = await fetch(
-      `${api}/api/v1/products/tracking/${productId}`,
+      `${api}/v1/products/tracking/${productId}`,
       {
         method: 'GET',
       },
@@ -25,7 +25,6 @@ const getData = async (productId: string) => {
 
     if (response.ok) {
       const fetchData = await response.json();
-      console.log(fetchData, 'fetchData');
       return fetchData.data;
     } else {
       console.log('error', await response.json());
